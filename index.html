@@ -35,7 +35,10 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+
+        /* Global Image Responsiveness */
+        img { max-width: 100%; height: auto; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -1444,6 +1447,30 @@
             .hardware-grid {
                 grid-template-columns: 1fr;
             }
+            .flagship-left {
+                padding: 28px 20px;
+            }
+            .flagship-right {
+                padding: 28px 20px;
+            }
+            .flagship-title {
+                font-size: 32px;
+            }
+            .flagship-icon {
+                width: 56px;
+                height: 56px;
+            }
+            .arch-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+                text-align: center;
+            }
+            .arch-parallel {
+                justify-content: center;
+            }
+            .arch-parallel::before {
+                content: '↓';
+            }
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -2401,48 +2428,82 @@
 
         /* Extra Small Devices */
         @media (max-width: 480px) {
-            .hero-headline { font-size: 28px; }
-            .hero-headline-gradient { font-size: 28px; }
+            section { padding: 60px 12px; }
+            .section-full { padding: 60px 12px; }
+
+            .hero-headline { font-size: 26px; }
+            .hero-headline-gradient { font-size: 26px; }
             .hero-stat { width: 100%; text-align: center; }
             .hero-stats { gap: 20px; }
+            .hero-description { font-size: 14px; padding: 0; }
 
-            .section-title { font-size: 24px; }
+            .section-title { font-size: 22px; }
             .section-header { margin-bottom: 40px; }
 
-            .expertise-hero-title { font-size: 28px; }
-            .expertise-stats { gap: 16px; }
-            .stat-card { padding: 24px 20px; }
-            .stat-number { font-size: 32px; }
+            .expertise-hero-title { font-size: 24px; }
+            .expertise-hero-subtitle { font-size: 15px; }
+            .expertise-inner { padding: 0 12px; }
+            .expertise-stats { gap: 12px; }
+            .stat-card { padding: 20px 16px; }
+            .stat-number { font-size: 28px; }
+            .stat-label { font-size: 12px; }
 
-            .gis-title { font-size: 24px; }
-            .activity-card { padding: 20px; flex-direction: column; text-align: center; }
-            .activity-icon { margin: 0 auto; }
+            .gis-title { font-size: 22px; }
+            .gis-intro { padding-right: 0; }
+            .gis-badge { padding: 8px 14px; font-size: 10px; }
+            .gis-text { font-size: 14px; }
+            .activity-card { padding: 16px; flex-direction: column; text-align: center; }
+            .activity-icon { margin: 0 auto; width: 44px; height: 44px; }
 
-            .flagship-left { padding: 32px 20px; }
-            .flagship-right { padding: 32px 20px; }
-            .flagship-title { font-size: 28px; }
-            .flagship-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-            .flagship-stat-number { font-size: 22px; }
-            .arch-row { grid-template-columns: 1fr; gap: 4px; padding: 12px; }
-            .arch-parallel { justify-content: flex-start; }
+            .flagship-card { border-radius: 20px; }
+            .flagship-left { padding: 24px 16px; }
+            .flagship-right { padding: 24px 16px; }
+            .flagship-title { font-size: 24px; }
+            .flagship-tagline { font-size: 14px; }
+            .flagship-desc { font-size: 14px; }
+            .flagship-header { gap: 12px; flex-wrap: wrap; }
+            .flagship-icon { width: 48px; height: 48px; border-radius: 14px; }
+            .flagship-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .flagship-stat-number { font-size: 20px; }
+            .flagship-stat-label { font-size: 10px; }
+            .flagship-feature { font-size: 11px; padding: 8px 12px; }
+            .arch-row { grid-template-columns: 1fr; gap: 4px; padding: 10px; }
+            .arch-component { font-size: 11px; }
+            .arch-tech { font-size: 10px; }
+            .arch-parallel { justify-content: center; font-size: 10px; }
 
-            .project-card { padding: 28px 20px; }
-            .project-title { font-size: 20px; }
+            .project-card { padding: 24px 16px; border-radius: 20px; }
+            .project-title { font-size: 18px; }
+            .project-icon { width: 52px; height: 52px; }
             .modules-grid { grid-template-columns: 1fr; }
+            .module-card { padding: 16px; }
 
             .bde-parallel-grid { grid-template-columns: 1fr; }
             .hardware-grid { grid-template-columns: 1fr; }
+            .hardware-section { padding: 16px; }
 
-            .aida-stats { flex-direction: column; gap: 24px; }
-            .aida-headline { font-size: 22px; }
+            .aida-banner { padding: 32px 16px; border-radius: 20px; }
+            .aida-stats { flex-direction: column; gap: 20px; }
+            .aida-headline { font-size: 20px; }
+            .aida-logo { font-size: 16px; }
 
-            .tech-grid { grid-template-columns: 1fr; }
-            .tech-card { padding: 20px; }
+            .tech-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .tech-card { padding: 16px; border-radius: 16px; }
+            .tech-name { font-size: 13px; }
 
-            .contact-card { padding: 32px 20px; }
+            .feature-card { padding: 24px 16px; }
+            .bde-card { padding: 24px 16px; }
+            .team-card { padding: 24px 16px; }
+            .process-card p { font-size: 13px; }
+
+            .contact-card { padding: 28px 16px; border-radius: 20px; }
             .contact-grid { grid-template-columns: 1fr; }
 
-            .cta-title { font-size: 32px; }
+            .cta-section { padding: 60px 16px; }
+            .cta-title { font-size: 28px; }
+            .cta-subtitle { font-size: 14px; }
+
+            footer { padding: 24px 16px; }
         }
 
         /* Hide mobile menu button on desktop */
