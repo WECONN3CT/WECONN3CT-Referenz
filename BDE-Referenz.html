@@ -1,0 +1,3269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WECONN3CT GMBH - Ihr Partner für digitale Produktionserfassung, BDE-Systeme und Industrie 4.0 Lösungen. Maßgeschneiderte Software mit eigener Hardware.">
+    <meta name="theme-color" content="#0071e3">
+    <title>WECONN3CT × BDE-System | Digitale Produktionserfassung</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-dark: #1d1d1f;
+            --bg-darker: #000000;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent-blue: #0071e3;
+            --accent-purple: #5e5ce6;
+            --accent-green: #30d158;
+            --accent-teal: #32ade6;
+            --accent-orange: #ff9f0a;
+            --accent-red: #ff453a;
+            --border-light: rgba(0,0,0,0.06);
+            --border-dark: rgba(255,255,255,0.1);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+            --shadow-xl: 0 25px 60px rgba(0,0,0,0.2);
+            --shadow-2xl: 0 50px 100px rgba(0,0,0,0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            font-size: 17px;
+            letter-spacing: -0.022em;
+            overflow-x: hidden;
+        }
+
+        /* Performance Optimizations */
+        .feature-card, .bde-card, .process-card, .tech-card, .software-card {
+            will-change: transform;
+            contain: layout style;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 52px;
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--text-primary) 0%, #424245 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--border-light);
+        }
+
+        .nav-badge {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: all 0.3s;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { opacity: 1; }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           HERO SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(0, 113, 227, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(48, 209, 88, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(94, 92, 230, 0.04) 0%, transparent 60%);
+            animation: gradientShift 20s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-3%, 3%) rotate(1deg); }
+            66% { transform: translate(3%, -3%) rotate(-1deg); }
+        }
+
+        /* Grid Pattern */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 70%);
+        }
+
+        /* Floating Orbs */
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .orb-1 { width: 400px; height: 400px; top: -100px; right: -100px; background: rgba(0, 113, 227, 0.15); animation-delay: 0s; }
+        .orb-2 { width: 300px; height: 300px; bottom: -50px; left: -100px; background: rgba(48, 209, 88, 0.12); animation-delay: -5s; }
+        .orb-3 { width: 200px; height: 200px; top: 40%; left: 10%; background: rgba(94, 92, 230, 0.1); animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -30px) scale(1.05); }
+            50% { transform: translate(-10px, 20px) scale(0.95); }
+            75% { transform: translate(15px, 10px) scale(1.02); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 113, 227, 0.08);
+            border: 1px solid rgba(0, 113, 227, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 28px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-eyebrow-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(48, 209, 88, 0.4); }
+            50% { opacity: 0.8; transform: scale(0.9); box-shadow: 0 0 0 8px rgba(48, 209, 88, 0); }
+        }
+
+        .hero-eyebrow span {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-headline {
+            font-size: clamp(52px, 9vw, 96px);
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            line-height: 1;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero-headline-gradient {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-green) 50%, var(--accent-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .hero-subheadline {
+            font-size: clamp(22px, 3vw, 32px);
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Rotating Text */
+        .rotating-wrapper {
+            display: inline-block;
+            height: 1.2em;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .rotating-text {
+            display: flex;
+            flex-direction: column;
+            animation: rotateText 10s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        .rotating-text span {
+            display: block;
+            height: 1.2em;
+            line-height: 1.2em;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        @keyframes rotateText {
+            0%, 18% { transform: translateY(0); }
+            22%, 38% { transform: translateY(-1.2em); }
+            42%, 58% { transform: translateY(-2.4em); }
+            62%, 78% { transform: translateY(-3.6em); }
+            82%, 98% { transform: translateY(-4.8em); }
+            100% { transform: translateY(0); }
+        }
+
+        .hero-description {
+            font-size: 19px;
+            color: var(--text-tertiary);
+            max-width: 700px;
+            margin: 0 auto 56px;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 72px;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-stat {
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            cursor: default;
+        }
+
+        .hero-stat:hover { transform: translateY(-8px) scale(1.02); }
+
+        .hero-stat-number {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll Hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            animation: fadeInUp 1s ease 0.6s forwards, bounce 2s ease-in-out infinite 1.5s;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .scroll-hint span {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid var(--text-secondary);
+            border-bottom: 2px solid var(--text-secondary);
+            transform: rotate(45deg);
+            opacity: 0.5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(12px); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SECTIONS BASE
+           ═══════════════════════════════════════════════════════════════ */
+        section { padding: 140px 24px; max-width: 1200px; margin: 0 auto; }
+        .section-full { max-width: 100%; padding: 140px 24px; }
+        .section-dark { background: var(--bg-dark); color: white; }
+        .section-gray { background: var(--bg-secondary); }
+
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-eyebrow {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+        .section-title {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           WARUM WECONN3CT
+           ═══════════════════════════════════════════════════════════════ */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-primary);
+            border-radius: 28px;
+            padding: 48px 36px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.04) 0%, rgba(48, 209, 88, 0.04) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(0, 113, 227, 0.2);
+        }
+
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f5e9 100%);
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--accent-blue);
+            stroke-width: 1.5;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.15) rotate(5deg);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            box-shadow: 0 15px 30px rgba(0, 113, 227, 0.3);
+        }
+
+        .feature-card:hover .feature-icon svg {
+            stroke: white;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Quote Block */
+        .quote-block {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            border-radius: 32px;
+            padding: 56px 52px;
+            margin: 80px auto;
+            max-width: 800px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            font-size: 120px;
+            color: var(--accent-blue);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-block cite {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           BDE ANFORDERUNGEN
+           ═══════════════════════════════════════════════════════════════ */
+        .bde-section {
+            background: linear-gradient(180deg, #f0f7ff 0%, #e8f5e9 50%, #f5f5f7 100%);
+        }
+
+        .bde-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .bde-card {
+            background: white;
+            border-radius: 24px;
+            padding: 36px;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bde-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .bde-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .bde-card:hover::before { transform: scaleX(1); }
+
+        .bde-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.1), rgba(48, 209, 88, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .bde-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--accent-blue);
+            stroke-width: 1.5;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .bde-card:hover .bde-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+        }
+
+        .bde-card:hover .bde-icon svg {
+            stroke: white;
+        }
+
+        .bde-card h4 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .bde-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .bde-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SOFTWARE SECTION (DARK)
+           ═══════════════════════════════════════════════════════════════ */
+        .software-section {
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #1d1d1f 100%);
+            color: white;
+            padding: 160px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .software-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        }
+
+        .software-section .section-eyebrow { color: var(--accent-green); }
+        .software-section .section-title { color: white; }
+        .software-section .section-subtitle { color: rgba(255,255,255,0.6); }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .software-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 36px;
+            padding: 56px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .software-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .software-card::after {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .software-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+        }
+
+        .software-card:hover::before { transform: scaleX(1); }
+        .software-card:hover::after { opacity: 1; }
+
+        .software-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            background: rgba(0, 113, 227, 0.15);
+            padding: 8px 18px;
+            border-radius: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .software-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .software-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            transition: transform 0.5s ease;
+            overflow: hidden;
+        }
+
+        .software-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .software-card:hover .software-icon { transform: scale(1.1) rotate(5deg); }
+
+        .software-title {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .software-tagline {
+            font-size: 18px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .software-description {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .software-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 36px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .software-feature {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.08);
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .software-feature:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-3px);
+        }
+
+        .software-stats {
+            display: flex;
+            gap: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .software-stat { text-align: left; }
+
+        .software-stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .software-stat-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+        }
+
+        /* Ordable Special Styling */
+        .software-card.ordable {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.06) 0%, rgba(255, 159, 10, 0.02) 100%);
+            border-color: rgba(255, 159, 10, 0.15);
+        }
+        .software-card.ordable::before { background: linear-gradient(90deg, #ff9f0a, #ff6b00); }
+        .software-card.ordable .software-badge { color: #ff9f0a; background: rgba(255, 159, 10, 0.15); }
+        .software-card.ordable .software-stat-number {
+            background: linear-gradient(135deg, #ff9f0a, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .software-card.ordable .software-icon {
+            background: linear-gradient(135deg, #ff9f0a, #ff6b00);
+        }
+
+        /* Flagship Card - Volle Breite */
+        .flagship-card {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 0;
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.08) 0%, rgba(255, 107, 0, 0.04) 100%);
+            border: 1px solid rgba(255, 159, 10, 0.2);
+            border-radius: 36px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .flagship-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff9f0a, #ff6b00);
+        }
+
+        .flagship-left {
+            padding: 56px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flagship-right {
+            background: rgba(0,0,0,0.4);
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flagship-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #ff9f0a;
+            background: rgba(255, 159, 10, 0.15);
+            padding: 8px 18px;
+            border-radius: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            width: fit-content;
+        }
+
+        .flagship-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #ff9f0a;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .flagship-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+
+        .flagship-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ff9f0a, #ff6b00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(255, 159, 10, 0.3);
+        }
+
+        .flagship-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flagship-title {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .flagship-tagline {
+            font-size: 18px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 24px;
+        }
+
+        .flagship-desc {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .flagship-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .flagship-feature {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.08);
+            padding: 10px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .flagship-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .flagship-stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff9f0a, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .flagship-stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+        }
+
+        /* Architektur-Diagramm */
+        .arch-section {
+            margin-bottom: 28px;
+        }
+
+        .arch-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+
+        .arch-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .arch-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            font-size: 12px;
+            transition: background 0.3s ease;
+        }
+
+        .arch-row:hover {
+            background: rgba(255,255,255,0.06);
+        }
+
+        .arch-component {
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+        }
+
+        .arch-tech {
+            color: #ff9f0a;
+            font-family: 'SF Mono', monospace;
+            font-size: 11px;
+        }
+
+        .arch-parallel {
+            color: var(--accent-green);
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .arch-parallel::before {
+            content: '→';
+            opacity: 0.5;
+        }
+
+        /* Hardware-Box */
+        .hardware-section {
+            background: rgba(255,159,10,0.08);
+            border: 1px solid rgba(255,159,10,0.15);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .hardware-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ff9f0a;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .hardware-item {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hardware-item::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: #ff9f0a;
+            border-radius: 50%;
+        }
+
+        /* BDE-Parallel Box */
+        .bde-parallel {
+            margin-top: 28px;
+            padding: 24px;
+            background: rgba(48, 209, 88, 0.06);
+            border: 1px solid rgba(48, 209, 88, 0.15);
+            border-left: 3px solid var(--accent-green);
+            border-radius: 16px;
+        }
+
+        .bde-parallel-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-green);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bde-parallel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .bde-parallel-item {
+            font-size: 13px;
+            color: rgba(255,255,255,0.8);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .bde-parallel-check {
+            color: var(--accent-green);
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Project Cards Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 28px;
+            padding: 36px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.12);
+            transform: translateY(-8px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            border-radius: 28px 28px 0 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-teal);
+            background: rgba(50, 173, 230, 0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+
+        .project-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .project-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .project-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 16px;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Module Grid für Schornsteinfeger */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .module-item {
+            font-size: 12px;
+            color: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.04);
+            padding: 10px 14px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .module-item svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--accent-teal);
+            stroke-width: 2;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* Project Stats */
+        .project-stats {
+            display: flex;
+            gap: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .project-stat-value {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-stat-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Timeline Card für Mertes */
+        .timeline-card {
+            background: linear-gradient(135deg, rgba(94,92,230,0.08), rgba(94,92,230,0.03));
+            border-color: rgba(94,92,230,0.2);
+        }
+
+        .timeline-card .project-badge {
+            color: var(--accent-purple);
+            background: rgba(94,92,230,0.15);
+        }
+
+        .timeline-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--accent-purple);
+            min-width: 50px;
+        }
+
+        .timeline-text {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Berlin Döner Special */
+        .franchise-card {
+            background: linear-gradient(135deg, rgba(255,69,58,0.08), rgba(255,69,58,0.03));
+            border-color: rgba(255,69,58,0.2);
+        }
+
+        .franchise-card .project-badge {
+            color: var(--accent-red);
+            background: rgba(255,69,58,0.15);
+        }
+
+        .franchise-card .project-stat-value {
+            background: linear-gradient(135deg, var(--accent-red), #ff9f0a);
+            -webkit-background-clip: text;
+        }
+
+        .rollout-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .rollout-tag {
+            font-size: 11px;
+            color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.06);
+            padding: 6px 12px;
+            border-radius: 14px;
+        }
+
+        /* Small BDE Parallel */
+        .bde-parallel-small {
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(48, 209, 88, 0.05);
+            border: 1px solid rgba(48, 209, 88, 0.12);
+            border-left: 2px solid var(--accent-green);
+            border-radius: 12px;
+        }
+
+        .bde-parallel-small-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        .bde-parallel-small-items {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .bde-parallel-small-item {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bde-parallel-small-item::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-size: 11px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .flagship-card {
+                grid-template-columns: 1fr;
+            }
+            .flagship-right {
+                padding: 40px;
+            }
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .flagship-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bde-parallel-grid {
+                grid-template-columns: 1fr;
+            }
+            .hardware-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PROCESS SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .process-section {
+            background: var(--bg-dark);
+            color: white;
+        }
+
+        .process-section .section-eyebrow { color: var(--accent-green); }
+        .process-section .section-title { color: white; }
+        .process-section .section-subtitle { color: rgba(255,255,255,0.6); }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            position: relative;
+        }
+
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 60px;
+            right: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            opacity: 0.3;
+        }
+
+        .process-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0 auto 24px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+
+        .process-card:hover .process-number {
+            transform: scale(1.2);
+            box-shadow: 0 15px 40px rgba(0, 113, 227, 0.4);
+        }
+
+        .process-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .process-card p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TECHNOLOGY SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .tech-section {
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-secondary) 100%);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .tech-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 36px 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .tech-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease;
+        }
+
+        .tech-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--accent-blue);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .tech-card:hover .tech-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .tech-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .tech-category {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TEAM SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .team-section {
+            background: var(--bg-secondary);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 28px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f0f4ff, #e8f5e9);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            transition: all 0.4s ease;
+        }
+
+        .team-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: var(--accent-blue);
+            stroke-width: 1.5;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .team-card:hover .team-icon {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .team-card:hover .team-icon svg {
+            stroke: white;
+        }
+
+        .team-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .team-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .team-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           BRANCHEN-EXPERTISE SECTION (Erweitert)
+           ═══════════════════════════════════════════════════════════════ */
+        .expertise-section {
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0, 113, 227, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(48, 209, 88, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .expertise-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Statement */
+        .expertise-hero {
+            text-align: center;
+            padding-bottom: 80px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 80px;
+        }
+
+        .expertise-hero .section-eyebrow {
+            color: var(--accent-green);
+        }
+
+        .expertise-hero-title {
+            font-size: clamp(42px, 6vw, 64px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .expertise-hero-title span {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .expertise-hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Stats Grid */
+        .expertise-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-number.accent-green {
+            background: linear-gradient(135deg, var(--accent-green), #7bed9f);
+            -webkit-background-clip: text;
+        }
+
+        .stat-number.accent-blue {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+            -webkit-background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .stat-sublabel {
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+            margin-top: 4px;
+        }
+
+        /* GIS Deep Dive */
+        .gis-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+
+        .gis-intro {
+            padding-right: 20px;
+        }
+
+        .gis-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(48, 209, 88, 0.1);
+            border: 1px solid rgba(48, 209, 88, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 28px;
+        }
+
+        .gis-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        .gis-badge-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .gis-title {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .gis-title span {
+            color: var(--accent-teal);
+        }
+
+        .gis-desc {
+            font-size: 17px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .gis-company-info {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 28px;
+        }
+
+        .gis-company-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .gis-logo-placeholder {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(50,173,230,0.2), rgba(48,209,88,0.2));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent-teal);
+        }
+
+        .gis-company-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .gis-company-sub {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .gis-company-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .gis-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .gis-detail svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--accent-teal);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Tätigkeiten Grid */
+        .gis-activities {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .activity-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 24px 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .activity-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.1);
+            transform: translateX(8px);
+        }
+
+        .activity-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(0,113,227,0.15), rgba(48,209,88,0.15));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .activity-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent-blue);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .activity-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .activity-content p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.6;
+        }
+
+        /* AIDA Network */
+        .aida-network {
+            background: linear-gradient(135deg, rgba(50,173,230,0.08), rgba(48,209,88,0.05));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .aida-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+        }
+
+        .aida-headline {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .aida-headline span {
+            color: var(--accent-teal);
+        }
+
+        .aida-desc {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .aida-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .aida-stat {
+            text-align: center;
+        }
+
+        .aida-stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 4px;
+        }
+
+        .aida-stat-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .expertise-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gis-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .aida-stats {
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .expertise-stats {
+                grid-template-columns: 1fr;
+            }
+            .stat-number {
+                font-size: 36px;
+            }
+            .gis-company-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CTA SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .cta-section {
+            background: linear-gradient(180deg, #000000 0%, #0d0d0d 100%);
+            color: white;
+            text-align: center;
+            padding: 160px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(0, 113, 227, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(48, 209, 88, 0.1) 0%, transparent 50%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-eyebrow {
+            font-size: 13px;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .cta-title {
+            font-size: clamp(44px, 6vw, 72px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 20px;
+        }
+
+        .cta-title-gradient {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 32px;
+            padding: 56px;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(20px);
+        }
+
+        .contact-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .contact-avatar svg {
+            width: 48px;
+            height: 48px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .contact-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .contact-role {
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 36px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 24px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(8px);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .contact-text {
+            text-align: left;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════════ */
+        footer {
+            background: #000000;
+            color: rgba(255,255,255,0.5);
+            padding: 40px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════════════════════════ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in:nth-child(1) { transition-delay: 0s; }
+        .fade-in:nth-child(2) { transition-delay: 0.1s; }
+        .fade-in:nth-child(3) { transition-delay: 0.2s; }
+        .fade-in:nth-child(4) { transition-delay: 0.3s; }
+        .fade-in:nth-child(5) { transition-delay: 0.4s; }
+        .fade-in:nth-child(6) { transition-delay: 0.5s; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+            .bde-grid { grid-template-columns: repeat(2, 1fr); }
+            .software-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid::before { display: none; }
+            .tech-grid { grid-template-columns: repeat(3, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 20px; }
+            .nav-links { display: none; }
+            section { padding: 100px 20px; }
+            .section-full { padding: 100px 20px; }
+            .hero-stats { flex-direction: column; gap: 32px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .bde-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: 1fr; }
+            footer { flex-direction: column; gap: 24px; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <nav>
+        <div class="nav-brand">
+            <span class="nav-logo">WECONN3CT</span>
+            <div class="nav-divider"></div>
+            <span class="nav-badge">BDE-Referenz</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">Start</a></li>
+            <li><a href="#warum">Warum Wir</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#bde">BDE-Lösung</a></li>
+            <li><a href="#software">Referenzen</a></li>
+            <li><a href="#prozess">Prozess</a></li>
+            <li><a href="#tech">Technologien</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <div class="hero-eyebrow-dot"></div>
+                <span>Referenzpräsentation · BDE-System</span>
+            </div>
+
+            <h1 class="hero-headline">
+                Digitale<br>
+                <span class="hero-headline-gradient">Produktionserfassung.</span>
+            </h1>
+
+            <p class="hero-subheadline">
+                <span>Echtzeit-Daten.</span>
+                <span class="rotating-wrapper">
+                    <span class="rotating-text">
+                        <span>Hardware-Integration.</span>
+                        <span>API-Schnittstellen.</span>
+                        <span>Mobile Erfassung.</span>
+                        <span>Live-Dashboards.</span>
+                        <span>Eigene Terminals.</span>
+                    </span>
+                </span>
+            </p>
+
+            <p class="hero-description">
+                Von der Konzeption bis zur Hardware: Wir entwickeln maßgeschneiderte BDE-Systeme
+                für Ihre Produktion. Echtzeit-Monitoring, nahtlose ERP-Integration und
+                robuste Terminals - alles aus einer Hand.
+            </p>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number count-number" data-target="7">0</div>
+                    <div class="hero-stat-label">Experten im Team</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number count-number" data-target="2024">0</div>
+                    <div class="hero-stat-label">Gegründet</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">100%</div>
+                    <div class="hero-stat-label">Eigenentwicklung</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number count-number" data-target="50">0+</div>
+                    <div class="hero-stat-label">Live-Installationen</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <span>Mehr erfahren</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         WARUM WECONN3CT
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section-full section-gray" id="warum">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div class="section-header fade-in">
+                <p class="section-eyebrow">Warum WECONN3CT</p>
+                <h2 class="section-title">Maßgeschneidert.<br>Nicht von der Stange.</h2>
+                <p class="section-subtitle">Wir bauen Software, die es so noch nicht gibt - individuell für jede Branche, jede Anforderung, jeden Kunden.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                    <h3>Individuelle Lösungen</h3>
+                    <p>Keine Standard-Software, die Sie anpassen müssen. Wir entwickeln exakt das, was Sie brauchen - von Grund auf für Ihre Prozesse konzipiert.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                    <h3>Hardware & Software</h3>
+                    <p>Terminals, Displays, Scanner - wir entwickeln und produzieren eigene Hardware. Perfekt abgestimmt auf unsere Software-Lösungen.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                    <h3>Echtzeit-Systeme</h3>
+                    <p>Live-Datenverarbeitung, sofortige Updates, keine Verzögerungen. Unsere Systeme sind für Millisekunden-Reaktionszeiten optimiert.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+                    <h3>Nahtlose Integration</h3>
+                    <p>REST-APIs, WebSockets, Webhooks - wir integrieren uns in jede bestehende Infrastruktur. ERP, MES, PPS - kein Problem.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                    <h3>Native Mobile Apps</h3>
+                    <p>iOS & Android, nativ entwickelt in Swift und Kotlin. Offline-fähig für den Einsatz dort, wo kein Netz ist.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3>Deutsche Qualität</h3>
+                    <p>Entwicklung, Hosting, Support - alles aus Deutschland. DSGVO-konform, deutsche Server, direkter Ansprechpartner.</p>
+                </div>
+            </div>
+
+            <div class="quote-block fade-in">
+                <p>„Software sollte sich an Ihre Prozesse anpassen - nicht umgekehrt."</p>
+                <cite>— Thinesh Rajabalah, Gründer WECONN3CT</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BRANCHEN-EXPERTISE (Erweitert)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section-full expertise-section" id="expertise">
+        <div class="expertise-inner">
+
+            <!-- Hero Statement -->
+            <div class="expertise-hero fade-in">
+                <p class="section-eyebrow">Branchenerfahrung</p>
+                <h2 class="expertise-hero-title">
+                    Nicht nur Entwickler.<br>
+                    <span>BDE-Experten.</span>
+                </h2>
+                <p class="expertise-hero-subtitle">
+                    Unser Geschäftsführer kommt direkt aus der Industrie-Software. 2,5 Jahre Erfahrung bei einem der führenden BDE-Anbieter Deutschlands — das ist die Grundlage für Ihr Projekt.
+                </p>
+            </div>
+
+            <!-- Statistiken -->
+            <div class="expertise-stats fade-in">
+                <div class="stat-card">
+                    <div class="stat-number accent-green">2,5</div>
+                    <div class="stat-label">Jahre</div>
+                    <div class="stat-sublabel">bei GIS GmbH</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number accent-blue">10.000+</div>
+                    <div class="stat-label">Installationen</div>
+                    <div class="stat-sublabel">AIDA-Netzwerk</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Jahre</div>
+                    <div class="stat-sublabel">Branchenerfahrung (AIDA ORGA)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Mitarbeiter</div>
+                    <div class="stat-sublabel">im Partnernetzwerk</div>
+                </div>
+            </div>
+
+            <!-- GIS Deep Dive -->
+            <div class="gis-section">
+                <div class="gis-intro fade-in">
+                    <div class="gis-badge">
+                        <span class="gis-badge-dot"></span>
+                        <span class="gis-badge-text">Direkte Branchenerfahrung</span>
+                    </div>
+
+                    <h3 class="gis-title">
+                        IT-Projektmanager bei der<br>
+                        <span>GIS GmbH</span>
+                    </h3>
+
+                    <p class="gis-desc">
+                        Von Oktober 2020 bis Mai 2023 war Thinesh Rajabalah als IT-Projektmanager bei der GIS GmbH in Troisdorf tätig — einem Spezialisten für Betriebsdatenerfassung und Zeitwirtschaft mit über 25 Jahren Markterfahrung.
+                    </p>
+
+                    <div class="gis-company-info">
+                        <div class="gis-company-header">
+                            <div class="gis-logo-placeholder">GIS</div>
+                            <div>
+                                <div class="gis-company-name">GIS GmbH</div>
+                                <div class="gis-company-sub">Teil der AIDA ORGA Unternehmensgruppe</div>
+                            </div>
+                        </div>
+                        <div class="gis-company-details">
+                            <div class="gis-detail">
+                                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Troisdorf bei Bonn
+                            </div>
+                            <div class="gis-detail">
+                                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                ~35 Mitarbeiter
+                            </div>
+                            <div class="gis-detail">
+                                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                Gegründet 1998
+                            </div>
+                            <div class="gis-detail">
+                                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                Familiengeführt
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gis-activities fade-in">
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Projektleitung BDE/MDE</h4>
+                            <p>Eigenverantwortliche Leitung von Implementierungsprojekten bei Industriekunden im Bereich Betriebsdatenerfassung.</p>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Zeiterfassungs-Systeme</h4>
+                            <p>Konzeption und Implementierung von Personal- und Arbeitszeiterfassungslösungen inkl. Zutrittssteuerung.</p>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Hardware-Integration</h4>
+                            <p>Integration von Datafox-Terminals, RFID-Lesern und Barcode-Scannern in bestehende Infrastrukturen.</p>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4>ERP-Schnittstellen</h4>
+                            <p>Anbindung an ERP-Systeme für Auftragsabwicklung, Lagerhaltung und Kapazitätsplanung.</p>
+                        </div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Kundenschnittstelle</h4>
+                            <p>Anforderungsanalyse, Beratung und Schulung — Brücke zwischen Kunde, Entwicklung und Systemtechnik.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AIDA Netzwerk -->
+            <div class="aida-network fade-in">
+                <div class="aida-title">Teil eines starken Netzwerks</div>
+                <h3 class="aida-headline">
+                    Die <span>AIDA ORGA</span> Unternehmensgruppe
+                </h3>
+                <p class="aida-desc">
+                    Die GIS GmbH ist Teil der AIDA ORGA Unternehmensgruppe — einer der führenden Anbieter für Betriebs- und Personalzeiterfassung in Deutschland. Über 50 Jahre Markterfahrung, 10.000+ erfolgreiche Installationen und ein Netzwerk von 200+ Experten.
+                </p>
+                <div class="aida-stats">
+                    <div class="aida-stat">
+                        <div class="aida-stat-number">50+</div>
+                        <div class="aida-stat-label">Jahre Erfahrung</div>
+                    </div>
+                    <div class="aida-stat">
+                        <div class="aida-stat-number">10.000+</div>
+                        <div class="aida-stat-label">Installationen</div>
+                    </div>
+                    <div class="aida-stat">
+                        <div class="aida-stat-number">200+</div>
+                        <div class="aida-stat-label">Mitarbeiter im Netzwerk</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BDE ANFORDERUNGEN
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section-full bde-section" id="bde">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div class="section-header fade-in">
+                <p class="section-eyebrow">Ihre Anforderungen</p>
+                <h2 class="section-title">BDE-System.<br>Von uns abgedeckt.</h2>
+                <p class="section-subtitle">Jede Anforderung der Ausschreibung erfüllen wir mit unserer Erfahrung aus vergleichbaren Projekten.</p>
+            </div>
+
+            <div class="bde-grid">
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <h4>Zeiterfassung</h4>
+                    <p>Präzise Erfassung von Arbeits- und Produktionszeiten. Terminal-basiert, per App oder automatisch durch Maschinensignale.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> Erfahrung aus Ordable-Kassensystem</div>
+                </div>
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 2l4 4"/><path d="M21 6l-4-4"/></svg></div>
+                    <h4>Maschinendatenerfassung</h4>
+                    <p>Automatische Erfassung von Maschinenzuständen, Laufzeiten, Stillstandszeiten und Störungsmeldungen über Schnittstellen.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> API-Integration Expertise</div>
+                </div>
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 12h6"/><path d="M9 16h6"/></svg></div>
+                    <h4>Auftragsverfolgung</h4>
+                    <p>Echtzeit-Tracking von Produktionsaufträgen. Status-Updates, Meilensteine und automatische Dokumentation.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> Live-Dashboard Erfahrung</div>
+                </div>
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+                    <h4>Shopfloor Dashboard</h4>
+                    <p>Live-Visualisierung aller Produktionsdaten auf großformatigen Displays direkt in der Fertigung. KPIs auf einen Blick.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> Display-Integration vorhanden</div>
+                </div>
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg></div>
+                    <h4>API-Integration</h4>
+                    <p>Nahtlose Anbindung an ERP-Systeme (SAP, Microsoft Dynamics, etc.), MES und bestehende Drittsysteme über standardisierte Schnittstellen.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> REST-API Kernkompetenz</div>
+                </div>
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/><polyline points="12 10 12 4 18 4"/></svg></div>
+                    <h4>Produktionscontrolling</h4>
+                    <p>Detaillierte Auswertungen, KPI-Tracking, automatisierte Reports und Export-Funktionen für das Management.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> PDF-Generator & Reporting</div>
+                </div>
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                    <h4>Mobile Datenerfassung</h4>
+                    <p>Native Apps für iOS und Android. Offline-fähig für den Einsatz in Bereichen ohne Netzabdeckung. Sync bei Verbindung.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> Schornsteinfeger Pro beweist es</div>
+                </div>
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                    <h4>Terminals & Hardware</h4>
+                    <p>Robuste Erfassungsterminals für die Produktion. RFID, Barcode, NFC - wir entwickeln und produzieren eigene Hardware.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> Eigene Hardware-Produktion</div>
+                </div>
+                <div class="bde-card fade-in">
+                    <div class="bde-icon"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+                    <h4>Cloud oder On-Premise</h4>
+                    <p>Flexibles Deployment: In unserer sicheren Cloud oder auf Ihren eigenen Servern. Ihre Daten, Ihre Entscheidung.</p>
+                    <div class="bde-check"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent-green);"><polyline points="20 6 9 17 4 12"/></svg> Beide Varianten verfügbar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SOFTWARE REFERENZEN
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="software-section section-full" id="software">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 24px;">
+            <div class="section-header fade-in" style="margin-bottom: 80px;">
+                <p class="section-eyebrow">Unsere Referenzen</p>
+                <h2 class="section-title">Bewiesene Kompetenz.<br>Direkt übertragbar.</h2>
+                <p class="section-subtitle">Diese Systeme zeigen: Wir haben bereits gebaut, was Sie für Ihr BDE-Projekt brauchen — Echtzeit-Datenerfassung, Hardware-Integration, Dashboards und mehr.</p>
+            </div>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 ORDABLE - FLAGSHIP
+                 ═══════════════════════════════════════════════════════════════ -->
+            <div class="flagship-card fade-in">
+                <div class="flagship-left">
+                    <div class="flagship-badge">
+                        <span class="flagship-badge-dot"></span>
+                        Flagship-Produkt · Live seit 2026
+                    </div>
+
+                    <div class="flagship-header">
+                        <div class="flagship-icon"><img src="ordable-logo.png" alt="Ordable Logo"></div>
+                        <h3 class="flagship-title">Ordable</h3>
+                    </div>
+
+                    <p class="flagship-tagline">Provisionsfreies Bestellsystem für die Gastronomie</p>
+
+                    <p class="flagship-desc">
+                        Ein komplettes Ökosystem: TSE-konforme Kassensoftware, Echtzeit-Dashboard, native Apps, eigene Hardware-Terminals, Bondrucker-Integration und Display-Systeme. <strong>Im Kern ein BDE-System für Restaurants</strong> — Datenerfassung an mehreren Stationen, zentrale Auswertung, Hardware-Anbindung.
+                    </p>
+
+                    <div class="flagship-features">
+                        <span class="flagship-feature">React + TypeScript</span>
+                        <span class="flagship-feature">Node.js Backend</span>
+                        <span class="flagship-feature">PostgreSQL</span>
+                        <span class="flagship-feature">WebSockets</span>
+                        <span class="flagship-feature">Swift (iOS)</span>
+                        <span class="flagship-feature">Kotlin (Android)</span>
+                        <span class="flagship-feature">AWS / Vercel</span>
+                        <span class="flagship-feature">Stripe API</span>
+                    </div>
+
+                    <div class="flagship-stats">
+                        <div class="flagship-stat">
+                            <div class="flagship-stat-number">50+</div>
+                            <div class="flagship-stat-label">Restaurants live</div>
+                        </div>
+                        <div class="flagship-stat">
+                            <div class="flagship-stat-number">3</div>
+                            <div class="flagship-stat-label">Plattformen</div>
+                        </div>
+                        <div class="flagship-stat">
+                            <div class="flagship-stat-number">&lt;500ms</div>
+                            <div class="flagship-stat-label">Echtzeit-Latenz</div>
+                        </div>
+                        <div class="flagship-stat">
+                            <div class="flagship-stat-number">0%</div>
+                            <div class="flagship-stat-label">Provision</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flagship-right">
+                    <!-- Architektur-Diagramm -->
+                    <div class="arch-section">
+                        <div class="arch-title">System-Architektur → BDE-Parallele</div>
+                        <div class="arch-grid">
+                            <div class="arch-row">
+                                <span class="arch-component">Admin-Dashboard</span>
+                                <span class="arch-tech">React + TypeScript</span>
+                                <span class="arch-parallel">Shopfloor-Dashboard</span>
+                            </div>
+                            <div class="arch-row">
+                                <span class="arch-component">Native iOS App</span>
+                                <span class="arch-tech">Swift</span>
+                                <span class="arch-parallel">Mobile Datenerfassung</span>
+                            </div>
+                            <div class="arch-row">
+                                <span class="arch-component">Native Android App</span>
+                                <span class="arch-tech">Kotlin</span>
+                                <span class="arch-parallel">Mobile Datenerfassung</span>
+                            </div>
+                            <div class="arch-row">
+                                <span class="arch-component">POS-Terminal</span>
+                                <span class="arch-tech">Custom Android HW</span>
+                                <span class="arch-parallel">BDE-Terminal</span>
+                            </div>
+                            <div class="arch-row">
+                                <span class="arch-component">Bondrucker-API</span>
+                                <span class="arch-tech">ESC/POS Protokoll</span>
+                                <span class="arch-parallel">Maschinenanbindung</span>
+                            </div>
+                            <div class="arch-row">
+                                <span class="arch-component">Payment Gateway</span>
+                                <span class="arch-tech">Stripe Connect</span>
+                                <span class="arch-parallel">ERP-Schnittstelle</span>
+                            </div>
+                            <div class="arch-row">
+                                <span class="arch-component">Echtzeit-API</span>
+                                <span class="arch-tech">WebSockets</span>
+                                <span class="arch-parallel">Live-Datenverarbeitung</span>
+                            </div>
+                            <div class="arch-row">
+                                <span class="arch-component">TSE-Integration</span>
+                                <span class="arch-tech">fiskaly Cloud-TSE</span>
+                                <span class="arch-parallel">Compliance/Zertifizierung</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hardware -->
+                    <div class="hardware-section">
+                        <div class="hardware-title">
+                            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            Eigene Hardware-Produktion
+                        </div>
+                        <div class="hardware-grid">
+                            <div class="hardware-item">POS-Terminal (Android)</div>
+                            <div class="hardware-item">Bondrucker (USB + BT)</div>
+                            <div class="hardware-item">NFC-Kartenleser</div>
+                            <div class="hardware-item">Küchen-Displays</div>
+                            <div class="hardware-item">Kassenlade</div>
+                            <div class="hardware-item">Custom-Gehäuse</div>
+                        </div>
+                    </div>
+
+                    <!-- BDE Parallel -->
+                    <div class="bde-parallel">
+                        <div class="bde-parallel-title">
+                            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polyline points="20 6 9 17 4 12"/></svg>
+                            Übertragbar auf Ihr BDE-Projekt
+                        </div>
+                        <div class="bde-parallel-grid">
+                            <div class="bde-parallel-item">
+                                <span class="bde-parallel-check">✓</span>
+                                Echtzeit-Datenerfassung an verteilten Stationen
+                            </div>
+                            <div class="bde-parallel-item">
+                                <span class="bde-parallel-check">✓</span>
+                                Eigene Hardware + Software-Integration
+                            </div>
+                            <div class="bde-parallel-item">
+                                <span class="bde-parallel-check">✓</span>
+                                Zentrales Dashboard mit KPI-Auswertung
+                            </div>
+                            <div class="bde-parallel-item">
+                                <span class="bde-parallel-check">✓</span>
+                                API-Schnittstellen (Drucker, Payment, Cloud)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 WEITERE PROJEKTE
+                 ═══════════════════════════════════════════════════════════════ -->
+            <div class="projects-grid">
+
+                <!-- Schornsteinfeger Pro -->
+                <div class="project-card fade-in">
+                    <span class="project-badge">Branchensoftware</span>
+                    <div class="project-icon"><img src="schornsteinfeger-pro-logo.jpg" alt="Schornsteinfeger Pro"></div>
+                    <h4 class="project-title">Schornsteinfeger Pro</h4>
+                    <p class="project-subtitle">Web + iOS + Android</p>
+                    <p class="project-desc">
+                        Komplette Branchensoftware für Schornsteinfeger-Betriebe. Digitale Formblätter, Offline-Sync, PDF-Generator — konzipiert für den Außendienst ohne Netz.
+                    </p>
+
+                    <div class="modules-grid">
+                        <div class="module-item">
+                            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                            Objektverwaltung
+                        </div>
+                        <div class="module-item">
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                            5 Formblätter (KÜO)
+                        </div>
+                        <div class="module-item">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            PDF-Generator
+                        </div>
+                        <div class="module-item">
+                            <svg viewBox="0 0 24 24"><path d="M21.2 15c.7-1.2 1-2.5.7-3.9-.6-2-2.4-3.5-4.4-3.5h-1.2c-.7-3-3.2-5.2-6.2-5.2-3.5 0-6.4 2.9-6.4 6.4v.2"/><path d="M11 21l3-3m0 0l3 3m-3-3v7"/></svg>
+                            Offline-Sync
+                        </div>
+                        <div class="module-item">
+                            <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                            Foto + Mängel
+                        </div>
+                        <div class="module-item">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
+                            Kalender-Sync
+                        </div>
+                    </div>
+
+                    <div class="project-stats">
+                        <div>
+                            <div class="project-stat-value">200</div>
+                            <div class="project-stat-label">Betriebe (Präsentation)</div>
+                        </div>
+                        <div>
+                            <div class="project-stat-value">5</div>
+                            <div class="project-stat-label">Formblätter</div>
+                        </div>
+                    </div>
+
+                    <div class="bde-parallel-small">
+                        <div class="bde-parallel-small-title">BDE-Relevanz</div>
+                        <div class="bde-parallel-small-items">
+                            <div class="bde-parallel-small-item">Mobile Erfassung mit Offline-Sync</div>
+                            <div class="bde-parallel-small-item">Komplexe Formular-Validierung</div>
+                            <div class="bde-parallel-small-item">PDF-Reports & Dokumentation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Berlin Döner -->
+                <div class="project-card franchise-card fade-in">
+                    <span class="project-badge">Multi-Standort Rollout</span>
+                    <div class="project-icon" style="background: linear-gradient(135deg, var(--accent-red), #ff9f0a);"><img src="berlin-doener-app.jpg" alt="Berlin Döner"></div>
+                    <h4 class="project-title">Berlin Döner</h4>
+                    <p class="project-subtitle">50 Restaurants · Franchise-Kette</p>
+                    <p class="project-desc">
+                        Kompletter Hardware- und Software-Rollout für eine wachsende Franchise-Kette. Ein Dashboard für alle 50 Standorte.
+                    </p>
+
+                    <div class="rollout-list">
+                        <span class="rollout-tag">Kassensystem</span>
+                        <span class="rollout-tag">Hardware-Rollout</span>
+                        <span class="rollout-tag">Zentral-Dashboard</span>
+                        <span class="rollout-tag">Food-Fotografie</span>
+                        <span class="rollout-tag">Speisekarten</span>
+                        <span class="rollout-tag">Display-Systeme</span>
+                        <span class="rollout-tag">Schulung</span>
+                    </div>
+
+                    <div class="project-stats">
+                        <div>
+                            <div class="project-stat-value">50</div>
+                            <div class="project-stat-label">Standorte</div>
+                        </div>
+                        <div>
+                            <div class="project-stat-value">Live</div>
+                            <div class="project-stat-label">Echtzeit-Daten</div>
+                        </div>
+                    </div>
+
+                    <div class="bde-parallel-small">
+                        <div class="bde-parallel-small-title">BDE-Relevanz</div>
+                        <div class="bde-parallel-small-items">
+                            <div class="bde-parallel-small-item">Multi-Standort mit zentraler Verwaltung</div>
+                            <div class="bde-parallel-small-item">Hardware-Installation vor Ort</div>
+                            <div class="bde-parallel-small-item">KPI-Vergleich zwischen Standorten</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mertes -->
+                <div class="project-card timeline-card fade-in">
+                    <span class="project-badge">Langzeit-Partnerschaft</span>
+                    <div class="project-icon" style="background: linear-gradient(135deg, var(--accent-purple), #a29bfe);">
+                        <svg viewBox="0 0 24 24" width="28" height="28" stroke="white" stroke-width="1.5" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4 class="project-title">Michael Mertes</h4>
+                    <p class="project-subtitle">Schornsteinfegermeister · Kunde seit Gründung</p>
+                    <p class="project-desc">
+                        End-to-End Digitalisierung eines Handwerksbetriebs — von der Software bis zum Imagefilm. Zeigt unsere langfristige Betreuung.
+                    </p>
+
+                    <div class="timeline-items">
+                        <div class="timeline-item">
+                            <span class="timeline-year">2024</span>
+                            <span class="timeline-text">Pilotkunde Schornsteinfeger Pro</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2025</span>
+                            <span class="timeline-text">Website + SEO + Imagefilm</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2026</span>
+                            <span class="timeline-text">Print-Kampagne mit QR-Tracking</span>
+                        </div>
+                    </div>
+
+                    <div class="project-stats">
+                        <div>
+                            <div class="project-stat-value">2+ J.</div>
+                            <div class="project-stat-label">Partnerschaft</div>
+                        </div>
+                        <div>
+                            <div class="project-stat-value">E2E</div>
+                            <div class="project-stat-label">Full-Service</div>
+                        </div>
+                    </div>
+
+                    <div class="bde-parallel-small">
+                        <div class="bde-parallel-small-title">BDE-Relevanz</div>
+                        <div class="bde-parallel-small-items">
+                            <div class="bde-parallel-small-item">Langfristige Betreuung & Support</div>
+                            <div class="bde-parallel-small-item">Direkte Feedback-Schleife</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PROZESS
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section-full process-section" id="prozess">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div class="section-header fade-in">
+                <p class="section-eyebrow">Unser Prozess</p>
+                <h2 class="section-title">Von der Idee zur Lösung.</h2>
+                <p class="section-subtitle">Strukturiert, transparent, effizient - so arbeiten wir mit Ihnen zusammen.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-card fade-in">
+                    <div class="process-number">1</div>
+                    <h4>Analyse</h4>
+                    <p>Wir verstehen Ihre Prozesse, Anforderungen und Ziele. Workshop vor Ort oder remote.</p>
+                </div>
+                <div class="process-card fade-in">
+                    <div class="process-number">2</div>
+                    <h4>Konzeption</h4>
+                    <p>Technische Architektur, UI/UX-Design, Hardware-Spezifikation. Alles dokumentiert.</p>
+                </div>
+                <div class="process-card fade-in">
+                    <div class="process-number">3</div>
+                    <h4>Entwicklung</h4>
+                    <p>Agile Sprints mit regelmäßigen Reviews. Sie sehen Fortschritte, nicht nur Ergebnisse.</p>
+                </div>
+                <div class="process-card fade-in">
+                    <div class="process-number">4</div>
+                    <h4>Rollout</h4>
+                    <p>Installation, Schulung, Go-Live. Wir sind da, bis alles läuft - und danach auch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TECHNOLOGIEN
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section-full tech-section" id="tech">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div class="section-header fade-in">
+                <p class="section-eyebrow">Technologie-Stack</p>
+                <h2 class="section-title">Moderne Technologien.</h2>
+                <p class="section-subtitle">Bewährte Technologien für skalierbare, wartbare und zukunftssichere Systeme.</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.5 0 3-.5 4-1"/><path d="M12 2c3 0 6 4.5 6 10s-3 10-6 10"/><path d="M2 12h20"/></svg></div>
+                    <div class="tech-name">React / Next.js</div>
+                    <div class="tech-category">Frontend</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                    <div class="tech-name">Node.js</div>
+                    <div class="tech-category">Backend</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                    <div class="tech-name">PostgreSQL</div>
+                    <div class="tech-category">Datenbank</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><svg viewBox="0 0 24 24"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg></div>
+                    <div class="tech-name">Swift</div>
+                    <div class="tech-category">iOS Native</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+                    <div class="tech-name">Kotlin</div>
+                    <div class="tech-category">Android Native</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+                    <div class="tech-name">AWS / Azure</div>
+                    <div class="tech-category">Cloud</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><svg viewBox="0 0 24 24"><path d="M22 12H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" y1="16" x2="6.01" y2="16"/><line x1="10" y1="16" x2="10.01" y2="16"/></svg></div>
+                    <div class="tech-name">Docker</div>
+                    <div class="tech-category">Container</div>
+                </div>
+                <div class="tech-card fade-in">
+                    <div class="tech-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                    <div class="tech-name">WebSockets</div>
+                    <div class="tech-category">Echtzeit</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TEAM
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="section-full team-section" id="team">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div class="section-header fade-in">
+                <p class="section-eyebrow">Unser Team</p>
+                <h2 class="section-title">7 Experten. 3 Bereiche.</h2>
+                <p class="section-subtitle">Ein kompaktes Team mit klarem Fokus - keine Overhead-Strukturen, direkte Kommunikation.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                    <h4>Full-Stack Development</h4>
+                    <p>Backend, Frontend, Mobile - unsere Entwickler beherrschen den kompletten Stack. React, Node.js, Swift, Kotlin.</p>
+                    <div class="team-count">4 Entwickler</div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-icon"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+                    <h4>Design & UX</h4>
+                    <p>UI/UX-Design, Branding, Prototyping. Wir gestalten Interfaces, die nicht nur gut aussehen, sondern funktionieren.</p>
+                    <div class="team-count">2 Designer</div>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+                    <h4>Strategie & Projektleitung</h4>
+                    <p>Beratung, Projektmanagement, Kundenkommunikation. Ein Ansprechpartner für alles.</p>
+                    <div class="team-count">1 Projektleiter</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CTA / KONTAKT
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="cta-section section-full" id="kontakt">
+        <div class="cta-content">
+            <p class="cta-eyebrow fade-in">Jetzt Kontakt aufnehmen</p>
+            <h2 class="cta-title fade-in">Bereit für Ihr<br><span class="cta-title-gradient">BDE-System?</span></h2>
+            <p class="cta-subtitle fade-in">Wir freuen uns auf Ihre Anfrage und stehen für ein unverbindliches Gespräch zur Verfügung.</p>
+
+            <div class="contact-card fade-in">
+                <div class="contact-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div class="contact-name">Thinesh Rajabalah</div>
+                <div class="contact-role">Gründer & Geschäftsführer</div>
+                <div class="contact-info">
+                    <a href="mailto:info@weconn3ct.de" class="contact-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                        <div class="contact-text">
+                            <div class="contact-label">E-Mail</div>
+                            <div class="contact-value">info@weconn3ct.de</div>
+                        </div>
+                    </a>
+                    <a href="tel:+491624521879" class="contact-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                        <div class="contact-text">
+                            <div class="contact-label">Telefon</div>
+                            <div class="contact-value">+49 162 4521879</div>
+                        </div>
+                    </a>
+                    <a href="https://www.weconn3ct.de" target="_blank" class="contact-item">
+                        <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                        <div class="contact-text">
+                            <div class="contact-label">Website</div>
+                            <div class="contact-value">weconn3ct.de</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="footer-logo">WECONN3CT GMBH</div>
+            <div class="footer-tagline">Software, Apps & Hardware aus einer Hand</div>
+        </div>
+        <div class="footer-links">
+            <a href="https://www.weconn3ct.de" target="_blank">Website</a>
+            <a href="https://www.weconn3ct.de/impressum.html" target="_blank">Impressum</a>
+            <a href="https://www.weconn3ct.de/datenschutz.html" target="_blank">Datenschutz</a>
+        </div>
+    </footer>
+
+    <script>
+        // Cache DOM elements
+        const scrollProgress = document.querySelector('.scroll-progress');
+        const nav = document.querySelector('nav');
+
+        // Combined scroll handler (performance optimized)
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            // Progress bar
+            scrollProgress.style.width = (scrollTop / scrollHeight) * 100 + '%';
+
+            // Nav effect
+            nav.classList.toggle('scrolled', scrollTop > 50);
+        }, { passive: true });
+
+        // Fade In Observer
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+        // Count Animation
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    if (target) {
+                        animateCount(entry.target, target);
+                        countObserver.unobserve(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.count-number').forEach(el => {
+            if (el.dataset.target) countObserver.observe(el);
+        });
+
+        function animateCount(element, target) {
+            let current = 0;
+            const duration = 1500;
+            const steps = 50;
+            const increment = target / steps;
+            const stepTime = duration / steps;
+            const suffix = element.textContent.includes('+') ? '+' : '';
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, stepTime);
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Software Card Mouse Effect
+        document.querySelectorAll('.software-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', x + 'px');
+                card.style.setProperty('--mouse-y', y + 'px');
+            });
+        });
+
+        // Scroll Hint Click
+        document.querySelector('.scroll-hint').addEventListener('click', () => {
+            document.querySelector('#warum').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
